@@ -39,9 +39,13 @@ CREATE TABLE `pessoa` (
   `estado` varchar(2) NOT NULL,
   `email` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+<<<<<<< HEAD
 
 
 -- --------------------------------------------------------
+=======
+ --------------------------------------------------------
+>>>>>>> c4f4f849d3da0582a5ac4f069c5fbe68a431b9cb
 
 --
 -- Estrutura da tabela `usuarios`
