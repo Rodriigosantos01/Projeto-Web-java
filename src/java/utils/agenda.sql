@@ -39,16 +39,7 @@ CREATE TABLE `pessoa` (
   `estado` varchar(2) NOT NULL,
   `email` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `pessoa`
---
-
-INSERT INTO `pessoa` (`id`, `nome`, `telefone`, `cep`, `logradouro`, `bairro`, `cidade`, `estado`, `email`) VALUES
-(3, 'Rodrigo', 9999, 9999, 'rua', 'bairro', 'cidade', 'es', 'email@gmail'),
-(7, 'Celina Herrera s2', 949139225, 8340500, 'Rua peramirim', 'Vila bela', 'SÃÂ£o Paulo', 'SP', 'celinaherrera@gmail.com');
-
--- --------------------------------------------------------
+ --------------------------------------------------------
 
 --
 -- Estrutura da tabela `usuarios`
