@@ -40,13 +40,6 @@ CREATE TABLE `pessoa` (
   `email` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Extraindo dados da tabela `pessoa`
---
-
-INSERT INTO `pessoa` (`id`, `nome`, `telefone`, `cep`, `logradouro`, `bairro`, `cidade`, `estado`, `email`) VALUES
-(3, 'Rodrigo', 9999, 9999, 'rua', 'bairro', 'cidade', 'es', 'email@gmail'),
-(7, 'Celina Herrera s2', 949139225, 8340500, 'Rua peramirim', 'Vila bela', 'SÃÂ£o Paulo', 'SP', 'celinaherrera@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -60,14 +53,6 @@ CREATE TABLE `usuarios` (
   `email` varchar(150) NOT NULL,
   `senha` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Extraindo dados da tabela `usuarios`
---
-
-INSERT INTO `usuarios` (`id`, `nome`, `email`, `senha`) VALUES
-(1, 'Rodrigo Santos', 'rodriigosantos01@gmail.com', '356a192b7913b04c54574d18c28d46e6395428ab'),
-(2, 'rodrigo', 'Rodrigo@gmail.com', 'senha');
 
 --
 -- Índices para tabelas despejadas
