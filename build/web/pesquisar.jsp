@@ -1,7 +1,12 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    Integer id_vinculado = (Integer) session.getAttribute("id");
+    String id_vinculado = (String) session.getAttribute("id");
+
     String login = (String) session.getAttribute("login");
+            
+    if(login == null){
+        RequestDispatcher redireciona = request.getRequestDispatcher("sair.jsp");
+        redireciona.forward(request, response);
+    }
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,6 +35,9 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
+                  <a class="nav-link" href="Controle?acao=listar">Listar todos<span class="sr-only">(Página atual)</span></a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link" href="cadastrar.jsp">Cadastrar<span class="sr-only">(Página atual)</span></a>
                 </li>
                 <li class="nav-item">
@@ -37,26 +45,38 @@
                 </li>                
               </ul>
               <form class="form-inline my-2 my-lg-0" action="Controle" method="post">
-                <input type="hidden" value="<%= id_vinculado %>" name="id_vinculado">
+                <input type="hidden" name="id_vinculado" value="<%= id_vinculado %>">
                 <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome" aria-label="Pesquisar">
                 <button class="btn btn-outline-success my-2 my-sm-0" name="acao" value="pesquisar" type="submit">Pesquisar</button>
               </form>
             </div>
         </nav>
 
-        <!-- Painel de Mensagem -->
+        <!-- Painel da Pesquisa -->
         <div class="container col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h3 class="panel-title h1">Mensagem</h3>
+                    <h3 class="panel-title h1">Pesquisa</h3>
                 </div>
-                <div class="panel-body text-justify">
-                    <h4>
-                        <!-- A linha abaixo apresenta a mensagem gerada no Controle -->
-                        <%out.print(request.getAttribute("mensagem"));%>
-                    </h4>
-                </div>
-            </div>
+                <div class="panel-body">
+                    <form name="form_mvc" class="form-horizontal" action="Controle" method="post">
+                        <fieldset>
+                            <div class="form-group">
+                                <label for="inputNome" class="col-lg-2 control-label">Nome</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" id="inputNome" name="nome" placeholder="Digite um nome ou parte dele" value="">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-6 col-lg-offset-2">
+                                    <button type="submit" name="acao" class="btn btn-primary" value="pesquisar">Pesquisar</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>        
+                </div>      
+            </div>                
         </div>
     </body>
 </html>
+

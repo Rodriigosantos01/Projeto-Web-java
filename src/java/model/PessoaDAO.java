@@ -10,6 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.bean.Login;
 import utils.ConnectionFactory;
 
 /**
@@ -40,7 +41,7 @@ public class PessoaDAO {
     public String inserir(Pessoa p) throws SQLException {
 
         // Instrução SQL para inclusão do registro
-        String sql = "INSERT INTO pessoa (nome, telefone, cep, logradouro, bairro, cidade, estado, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO pessoa (nome, telefone, cep, logradouro, bairro, cidade, estado, email, id_usuario) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try {
             try ( // Prepara a instrução SQL para ser enviada ao banco de dados
@@ -55,8 +56,9 @@ public class PessoaDAO {
                 ps.setString(6, p.getCidade());
                 ps.setString(7, p.getEstado());
                 ps.setString(8, p.getEmail());
-
-                // Executa a instrução de inclusão do registro
+                ps.setInt(9, p.getId_vinculado());
+                
+// Executa a instrução de inclusão do registro
                 ps.execute();
             }
 
@@ -221,9 +223,8 @@ public class PessoaDAO {
     public List<Pessoa> pesquisar(Pessoa p) throws SQLException {
 
         // Instrução SQL para recuperar os registros
-        String sql = "SELECT * FROM pessoa "
-                + "WHERE nome like ? ORDER BY nome ASC;";
-
+        String sql = "SELECT * FROM pessoa WHERE nome like ? AND id_usuario = ? ORDER BY nome ASC;";
+                    
         // Lista para receber os registros recuperados
         List lstPessoas = new ArrayList();
 
@@ -231,6 +232,7 @@ public class PessoaDAO {
                 PreparedStatement ps = conexao.prepareStatement(sql)) {
             // Inclui o valor informado a ser atribuido à instrução SQL
             ps.setString(1, p.getNome());
+            ps.setInt(2, p.getId_vinculado());
 
             try ( // Objeto que armazenará os dados recuperados (recordSet)
                     ResultSet rs = ps.executeQuery()) {
@@ -281,6 +283,8 @@ public class PessoaDAO {
                 PreparedStatement ps = conexao.prepareStatement(sql);
                 // Objeto que armazenará os dados recuperados (ResultSet)
                 ResultSet rs = ps.executeQuery()) {
+                
+                
             /**
              * Percorre os registros retornados do banco de dados e coloca em
              * uma lista (lstPessoas)

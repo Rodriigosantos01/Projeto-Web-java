@@ -28,10 +28,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" href="Controle?acao=listar">Listar todos<span class="sr-only">(Página atual)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="cadastrar.html">Cadastrar<span class="sr-only">(Página atual)</span></a>
+                  <a class="nav-link" href="cadastrar.jsp">Cadastrar<span class="sr-only">(Página atual)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="sair.jsp">Sair<span class="sr-only">(Página atual)</span></a>

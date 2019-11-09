@@ -14,9 +14,18 @@ public class Pessoa implements Serializable {
     private String cidade;
     private String estado;
     private String email;
+    private int id_vinculado;
     
     // Método construtor
     public Pessoa() {
+    }
+
+    public int getId_vinculado() {
+        return id_vinculado;
+    }
+
+    public void setId_vinculado(int id_vinculado) {
+        this.id_vinculado = id_vinculado;
     }
 
     // Métodos getters e setters

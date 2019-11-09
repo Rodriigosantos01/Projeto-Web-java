@@ -1,3 +1,17 @@
+<%@page import="java.util.List"%>
+<%@page import="model.bean.Pessoa"%>
+<%@page import="java.util.ArrayList"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%
+    Integer id_vinculado = (Integer) session.getAttribute("id");
+
+    String login = (String) session.getAttribute("login");
+            
+    if(login == null){
+        RequestDispatcher redireciona = request.getRequestDispatcher("sair.jsp");
+        redireciona.forward(request, response);
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -17,16 +31,9 @@
         
         <!-- Jquery-->
         <script src="inc/js/jquery-3.4.1.min.js"></script>
-        
-        <!-- JS para buscar CEP-->
-        <script src="inc/js/cep.js"></script>  
-
-		<script>
-			
-		</script>
     </head>
     <body>
-        <!-- Menu de navegação fixo no topo -->
+        <!-- Menu de navegaÃ§Ã£o fixo no topo -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Alterna navegação">
               <span class="navbar-toggler-icon"></span>
@@ -36,22 +43,19 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link" href="Controle?acao=listar">Listar todos<span class="sr-only">(Página atual)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="cadastrar.html">Cadastrar<span class="sr-only">(Página atual)</span></a>
+                  <a class="nav-link" href="cadastrar.jsp">Cadastrar<span class="sr-only">(Página atual)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="sair.jsp">Sair<span class="sr-only">(Página atual)</span></a>
                 </li>                
               </ul>
               <form class="form-inline my-2 my-lg-0" action="Controle" method="post">
+                <input type="hidden" value="<%= id_vinculado %>" name="id_vinculado">
                 <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" name="nome" aria-label="Pesquisar">
                 <button class="btn btn-outline-success my-2 my-sm-0" name="acao" value="pesquisar" type="submit">Pesquisar</button>
               </form>
             </div>
         </nav>
-
         <!-- Painel do cadastro -->
         <div class="container col-md-6 col-md-offset-3">
             <div class="panel panel-primary">
@@ -66,6 +70,7 @@
                                     <div class="form-group">
                                         <label for="inputNome">Nome</label>
                                         <div class="col-lg-12">
+                                            <input type="hidden" value="<%= id_vinculado%>" name="id_vinculado">
                                             <input type="text" class="form-control" id="inputNome" name="nome" placeholder="Digite seu nome" value="" required>
                                         </div>
                                     </div>
